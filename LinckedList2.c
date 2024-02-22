@@ -1,5 +1,5 @@
 /*
-ÇØ´ç ¸µÅ©µå¸®½ºÆ®´Â ±âº»ÀûÀÎ ±â´É°ú ´õºÒ¾î, ¿À¸§Â÷¼øÀ¸·Î µ¥ÀÌÅÍ¸¦ »ðÀÔÇÏ´Â ±â´É°ú Æ¯Á¤ ³ëµå¸¦ »èÁ¦ÇÏ´Â ±â´ÉÀ» Ãß°¡ÇÑ´Ù.
+ï¿½Ø´ï¿½ ï¿½ï¿½Å©ï¿½å¸®ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½âº»ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½É°ï¿½ ï¿½ï¿½ï¿½Ò¾ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½É°ï¿½ Æ¯ï¿½ï¿½ ï¿½ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ñ´ï¿½.
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -20,17 +20,17 @@ typedef struct _LinkedList
     Node *tail;
     Node *curr;
     Node *prev;
-    int NumOfData; // µ¥ÀÌÅÍ »ðÀÔ½Ã¿¡ ÇØ´ç °ª Áõ°¡ ½ÃÅ°±â
+    int NumOfData; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô½Ã¿ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å°ï¿½ï¿½
 
 } List;
 
 void ListInit(List *list);
 void ListInsert(List *list, int data);
-void ListInsertAscending(List *list, int data); // »õ·ÎÃß°¡µÈ ÇÔ¼ö1 : µ¥ÀÌÅÍ¸¦ ¿À¸§Â÷¼øÀ¸·Î »ðÀÔÇÑ´Ù.
-void LinearSearch(List *list);                  // Search->LinearSearch·Î ÇÔ¼ö¸í º¯°æ
+void ListInsertAscending(List *list, int data); // ï¿½ï¿½ï¿½ï¿½ï¿½ß°ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½1 : ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
+void LinearSearch(List *list);                  // Search->LinearSearchï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 int IsEmpty(List *list);
 int Count(List *list);
-int Delete(List *list, int data); // »õ·Î Ãß°¡µÈ ÇÔ¼ö3: Æ¯Á¤³ëµå¸¦ »èÁ¦ÇÑ´Ù.
+int Delete(List *list, int data); // ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½3: Æ¯ï¿½ï¿½ï¿½ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 void DeleteAll(List *list);
 
 int main()
@@ -40,7 +40,7 @@ int main()
     ListInit(&list);
     IsEmpty(&list);
 
-    printf("¿À¸§Â÷¼ø µ¥ÀÌÅÍ »ðÀÔ ...\n\n");
+    printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ...\n\n");
     ListInsertAscending(&list, 10);
     ListInsertAscending(&list, 2);
     ListInsertAscending(&list, 8);
@@ -48,13 +48,13 @@ int main()
     ListInsertAscending(&list, 20);
     ListInsertAscending(&list, 14);
 
-    printf("µ¥ÀÌÅÍ ¸ñ·Ï : ");
+    printf("Elements : ");
     LinearSearch(&list);
     printf("\n\n");
 
-    printf("¼±ÅÃÇÑ µ¥ÀÌÅÍ »èÁ¦ ½ÇÇà\n\n");
-    printf("%dÀÌ(°¡) »èÁ¦µÇ¾ú½À´Ï´Ù!\n", Delete(&list, 3));
-    printf("\n»èÁ¦ÈÄ µ¥ÀÌÅÍ ¸ñ·Ï : ");
+    printf("Choosing data is deleted!\n\n");
+    printf("%d is deleted!\n", Delete(&list, 3));
+    printf("\nData list after deleting : ");
     LinearSearch(&list);
 
     return 0;
@@ -62,34 +62,147 @@ int main()
 
 void ListInit(List *list)
 {
+    list->tail=NULL;
+    list->head=NULL;
+    list->curr=NULL;
+    list->prev=NULL;
+    list->NumOfData=0;
+}
+int IsEmpty(List *list)
+{
+    if(list->head==NULL){
+        return TRUE;
+    }else{
+        return FALSE;
+    }
 }
 
 void ListInsert(List *list, int data)
 {
+    Node *newNode=(Node *)malloc(sizeof(Node));
+    newNode->data=data;
+    newNode->next=NULL;
+    if(IsEmpty(list)){
+        list->head=newNode;
+        list->tail=newNode;
+    }
+    list->tail->next=newNode;
+    list->tail=newNode;
+    list->NumOfData++;
 }
 
 void ListInsertAscending(List *list, int data)
 {
+
+    
+    Node *newNode=(Node *)malloc(sizeof(Node));
+    newNode->data=data;
+    newNode->next=NULL;
+
+    if (IsEmpty(list))
+    {
+        list->head = newNode;
+        list->tail = newNode;
+    }else{
+        list->prev=NULL;
+        list->curr=list->head;
+        while (list->curr!=NULL&&list->curr->data<data)
+        {
+            list->prev=list->curr;
+            list->curr=list->curr->next;
+        
+        }
+
+        if(list->prev==NULL){
+            newNode->next=list->head;
+            list->head=newNode;
+        }else{
+            list->prev->next=newNode;
+            newNode->next=list->curr;
+            if(list->curr==NULL){
+                list->tail=newNode;
+            }
+        }
+        
+    }
+    list->NumOfData++;
+
+
 }
 
-int IsEmpty(List *list)
-{
-}
+
 
 int Count(List *list)
 {
+    return list->NumOfData;
 }
 
 void LinearSearch(List *list)
 {
+
+    list->curr=list->head;
+    while (list->curr!=NULL)
+    {
+        printf("%d",list->curr->data);
+        list->curr=list->curr->next;
+    }
+    
 }
 
 int Delete(List *list, int data)
 {
+    Node * delNode;
+    if(IsEmpty(list)){
+        return -1;
+    }else{
+        list->prev=NULL;
+        list->curr=list->head;
+        while (list->curr!=NULL&&list->curr->data!=data)
+        {
+            list->prev=list->curr;
+            list->curr=list->curr->next;
+        }
+
+        delNode=list->curr;
+        if(list->prev==NULL)
+
+        {
+            delNode=list->head;
+            list->head=list->head->next;
+            
+
+        }else{
+            list->prev->next=list->curr->next;
+            if(list->curr==NULL){
+                delNode=list->tail;
+                list->tail=list->prev;
+            }
+
+        }
+    }
+    free(delNode);
+    list->NumOfData--;
+return data;
+
 }
 
 void DeleteAll(List *list)
 {
+    Node *delNode;
+    while (!IsEmpty(list))
+    {
+        
+    delNode=list->head;
+    list->head=list->head->next;
+    free(delNode);
+    }
+
+    list->tail=NULL;
+    list->prev=NULL;
+    list->curr=NULL;
+    
+    list->NumOfData=0;
+    
 
     
 }

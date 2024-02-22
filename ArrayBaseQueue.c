@@ -78,28 +78,55 @@ int main(void)
 
 void QueueInit(Queue *q)
 {
+    q->front=0;
+    q->rare=0;
 }
 
 int IsEmpty(Queue *q)
 {
+    if(q->front%Q_SIZE == q->rare%Q_SIZE){
+        return TRUE;
+    }else{
+        return FALSE;
+    }
 }
 
 int IsFull(Queue *q)
 {
+    if((q->rare+1)%Q_SIZE==(q->front%Q_SIZE)){
+        return TRUE;
+    }else{
+        return FALSE;
+    }
 }
 
 void Enqueue(Queue *q, int data)
 {
+    if(IsFull(q)){
+        return ;
+    }
+    q->rare=(q->rare+1)%Q_SIZE;
+    q->arr[q->rare]=data;
 }
 
 void Dequeue(Queue *q)
 {
+    if(IsEmpty(q)){
+        return;
+    }
+    q->front=(q->front+1)%Q_SIZE;
+    q->arr[q->front]=-1;
 }
 
 int QueueSize(Queue *q)
 {
+    return(abs(q->rare%Q_SIZE - q->front%Q_SIZE));
 }
 
 int QueuePeek(Queue *q)
 {
+    if(IsEmpty(q)){
+        return -1;
+    }
+    return q->arr[(q->front+1)%Q_SIZE];
 }

@@ -74,23 +74,122 @@ int main()
 
 void ListInit(List *list)
 {
+    list->head=NULL;
+    list->tail=NULL;
+    list->NumOfData=0;
+}
+
+int IsEmpty(List *list)
+{
+    if(list->head==NULL){
+        return TRUE;
+    }else{
+        return FALSE;
+    }
 }
 void AddFirst(List *list, int data)
 {
+    Node *newNode=(Node *)malloc(sizeof(Node));
+    newNode->data=data;
+    newNode->left=NULL;
+    newNode->right=list->head;
+       if(IsEmpty(list)){
+      list->head=newNode;
+      list->tail=newNode;
+    }else{
+        list->head->left=newNode;
+        //newNode->right=list->head하지 않는 이유
+        //newNode->left는 NULL가리키도록 설정했음 위에서
+        //근데 newNode다음에 오는 list->head->left는 가르키는 값을 설정하도록 두지않음
+        // linked list특성상 list->head->right는 옆을 가르키도록 되있으므로 여기서 는 
+        // 작성된 코드 처럼 사용되야함
+        list->head=newNode;
+
+    }
+
+
+    list->NumOfData++;
+
 }
 int DeleteFirst(List *list)
 {
+       if(IsEmpty(list)){
+        return -1;
+    }
+    Node *delNode;
+    delNode=list->head;
+    int retdata=0;
+    retdata=delNode->data;
+    list->head=list->head->right;
+  
+    if(list->head){
+        list->head->left=NULL;//헤드가 있으면 새로운 값 들어오기전 젤 왼쪽이 비어있음
+    }else{
+        list->tail=NULL; // 리스트가 비어있는것
+    }
+      free(delNode);
+        list->NumOfData--;
+    delNode=NULL;
+    return retdata;
+
 }
 void AddLast(List *list, int data)
 {
+
+    Node *newNode=(Node *)malloc(sizeof(Node));
+    newNode->data=data;
+    newNode->right=NULL;
+    newNode->left=list->tail;
+        if(IsEmpty(list)){
+      list->head=newNode;
+      list->tail=newNode;
+    }else{
+        list->tail->right=newNode;
+        //여기서 list->tail->left는 가르키고 있는 것이 그전 리스트이고
+        //list->tail->right를 새로운 노드를 가르키도록 해야함
+        // 안해놓으면 비어있으므로
+        list->tail=newNode;
+
+    }
+
+
+    
+
+
 }
 int DeleteLast(List *list)
 {
+       if(IsEmpty(list)){
+        return -1;
+    }
+    Node *delNode;
+    delNode=list->tail;
+    int retdata=0;
+    retdata=delNode->data;
+    list->tail=list->tail->left;
+    
+
+    //없어도 되지만 조건 확실히하기 위해 필요
+    if(list->tail){
+        list->tail->right=NULL;//헤드가 있으면 새로운 값 들어오기전 젤 왼쪽이 비어있음
+    }else{
+        list->head=NULL; // 리스트가 비어있는것
+    }
+    
+    free(delNode);
+    
+    list->NumOfData--;
+     delNode=NULL;
+    return retdata;
+
+
+
+
 }
-int IsEmpty(List *list)
-{
-}
+
 int Count(List *list)
 {
+
+    return list->NumOfData;
     
 }
